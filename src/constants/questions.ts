@@ -1,0 +1,58 @@
+export const Questions = [
+  {
+    id: 1,
+    image: require('../../assets/png/pendulum-1.png'),
+    options: ['Lighthouse of Hercules', 'Faro lighthouse', 'White Tower Lighthouse'],
+    correctOption: 1,
+    question: 'Which lighthouse is considered one of the Seven Wonders of the World?',
+  },
+  {
+    id: 2,
+    image: require('../../assets/png/pendulum-2.png'),
+    options: ['Greece', 'Italy', 'Egypt'],
+    correctOption: 2,
+    question: 'In which country was the Faro lighthouse located?',
+  },
+  {
+    id: 3,
+    image: require('../../assets/png/pendulum-3.png'),
+    options: ['They were temples', 'hey were used as signal towers', 'Were schools for sailors'],
+    correctOption: 1,
+    question: 'What role did lighthouses play in the Middle Ages, apart from navigation?',
+  },
+  {
+    id: 4,
+    image: require('../../assets/png/pendulum-4.png'),
+    options: ['Using a steam enginet', "Invention of electricity", "Use of oil lamps and reflectorst"],
+    correctOption: 2,
+    question: 'What invention in the 18th century significantly improved the efficiency of lighthouses?',
+  },
+  {
+    id: 5,
+    image: require('../../assets/png/pendulum-5.png'),
+    options: ['Pharos Lighthouse', 'Eddystone Lighthouseacht', 'Alaki Lighthouse'],
+    correctOption: 1,
+    question: 'Which lighthouse became the prototype for many others in 1782?',
+  },
+  {
+    id: 6,
+    image: require('../../assets/png/pendulum-6.png'),
+    options: ['Invention of steam ships', 'Introduction of radar systems and GPS', 'Construction of large bridges'],
+    correctOption: 1,
+    question: 'What technological development in the 20th century reduced the role of lighthouses?',
+  },
+  {
+    id: 7,
+    image: require('../../assets/png/pendulum-7.png'),
+    options: ['They symbolize hope and salvation', 'They are the oldest structures on Earth', 'They are used for shooting movies'],
+    correctOption: 0,
+    question: 'Why do lighthouses remain important symbols in culture even today?',
+  },
+  {
+    id: 8,
+    image: require('../../assets/png/pendulum-8.png'),
+    options: ['250 BC', '280 BC', '300 AD'],
+    correctOption: 1,
+    question: 'When was the first known lighthouse in human history built?',
+  },
+];
