@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { View, Text, Image, StyleSheet, Pressable, ImageBackground, Alert } from 'react-native';
+import { View, Text, Image, StyleSheet, Pressable, ImageBackground, Alert, ScrollView } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { TabContext } from '../navigation/navigation';
 import BackArrowSvg from '../../assets/svg/back-button.svg'
 import QuestionMarkSvg from '../../assets/svg/question-mark.svg'
 import { getAsyncStorageItem, setAsyncStorage } from '../utils/async-storage';
-
+import { Dimensions } from 'react-native';
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 const images = [
   require('../../assets/png/lifebuoy.png'),
   require('../../assets/png/ship-rudder.png'),
@@ -123,48 +125,53 @@ export default function BrunswickCards({ navigation }: any) {
       resizeMode='cover'
       style={styles.container}
     >
-      <View
-        style={styles.header}
-      >
-        <Pressable
-          onPress={() => {
-            navigation.navigate('Home')
-            resetGame()
-          }} 
-        >
-          <Image style={{width:24, height:24}} source={require('../../assets/svgtopng/back-button.png')}/>
-        </Pressable>
-        <Text
-          style={styles.mainText}
-        >
-          Brunswick cards
-        </Text>
-      </View>
-      <Text
-        style={styles.text}
-      >
-        Find a Pair to Things
-      </Text>
-      <View style={styles.grid}>
-        {grid.map((tile, index) => (
-          <Pressable
-            key={index}
-            
-            onPress={() => handleTilePress(index)}
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={{  }}>
+          <View
+            style={styles.header}
           >
-            <ImageBackground
-              source={require('../../assets/png/cart.png')}
-              style={styles.tile}
+            <Pressable
+              onPress={() => {
+                navigation.navigate('Home')
+                resetGame()
+              }}
             >
-              {tile.isRevealed || tile.isMatched ? (
-                <Image source={tile.image} style={styles.image} />
-              ) : (
-                <Image style={{width:59, height:59}} source={require('../../assets/svgtopng/question-mark.png')}/>
-              )}
-            </ImageBackground>
-          </Pressable>
-        ))}
-      </View>
+              <Image style={{ width: 24, height: 24 }} source={require('../../assets/svgtopng/back-button.png')} />
+            </Pressable>
+            <Text
+              style={styles.mainText}
+            >
+              Brunswick cards
+            </Text>
+          </View>
+          <Text
+            style={styles.text}
+          >
+            Find a Pair to Things
+          </Text>
+          <View style={styles.grid}>
+            {grid.map((tile, index) => (
+              <Pressable
+                key={index}
+                onPress={() => handleTilePress(index)}
+              >
+                <ImageBackground
+                  source={require('../../assets/png/cart.png')}
+                  style={styles.tile}
+                >
+                  {tile.isRevealed || tile.isMatched ? (
+                    <Image source={tile.image} style={styles.image} />
+                  ) : (
+                    <Image style={styles.image} source={require('../../assets/svgtopng/question-mark.png')} />
+                  )}
+                </ImageBackground>
+              </Pressable>
+            ))}
+          </View>
+          <View style={{ height: 150 }}></View>
+        </View>
+      </ScrollView>
+      
     </ImageBackground>
   );
 };
@@ -173,7 +180,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    paddingHorizontal: 30,
+    paddingHorizontal: 10,
   },
   header: {
     paddingTop: 60,
@@ -181,7 +188,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     alignItems: 'center',
-    marginBottom: 30,
+    marginBottom: 10,
   },
   mainText: {
     fontFamily: 'GUERRILLA-Normal',
@@ -197,23 +204,24 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     color: '#F9F9F9',
     textAlign: 'center',
-    marginBottom: 50,
+    marginBottom: 20,
   },
   grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
+    width: '100%'
   },
   tile: {
-    width: 100,
-    height: 100,
-    marginVertical: 10,
+    width: windowWidth / 3 - 20, // Плитка займає третину екрану мінус відступ
+    height: windowWidth / 3 - 20, // Висота така ж, як ширина для квадратних плиток
+    margin: 5, 
     justifyContent: 'center',
     alignItems: 'center',
   },
   image: {
-    width: 59,
-    height: 59,
+    width: '70%', // Зменшили розмір зображення всередині плитки
+    height: '70%',
     resizeMode: 'contain',
   },
   hiddenTile: {
