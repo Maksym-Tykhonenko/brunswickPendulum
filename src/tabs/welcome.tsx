@@ -3,8 +3,8 @@ import { View, Text, Image, StyleSheet, Pressable, ImageBackground, SafeAreaView
 import { useFocusEffect } from '@react-navigation/native';
 import { TabContext } from '../navigation/navigation';
 //import Whale from '../../assets/svg/whale.svg'
-
-
+// 
+// ../../assets/bcgr.png
 
 
 export default function Welcome({ navigation }: any) {
