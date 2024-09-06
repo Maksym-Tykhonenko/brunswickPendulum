@@ -63,7 +63,7 @@ export default function LighthouseQuiz({ navigation }: any) {
 
   return (
     <ImageBackground
-      source={require('../../assets/png/background.png')}
+      source={require('../../assets/upgrDiz/bcgr.png')}
       resizeMode='cover'
       style={styles.container}
     >
